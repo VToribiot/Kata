@@ -35,7 +35,7 @@ class MyTestCase(u.TestCase):
         t1 = m.Temperature(-91.0450, "C")
         t2 = m.Temperature(26.2170, "K")
         t3 = t1.multiply(t2)
-        self.assertAlmostEqual(22,436.492485, t3.value)
+        self.assertAlmostEqual(22436.492485, t3.value)
         self.assertEqual("C", t3.scale)
 
     def test06(self):
@@ -43,7 +43,7 @@ class MyTestCase(u.TestCase):
         t2 = m.Temperature(81.6525, "C")
         t3 = t1.add(t2)
         self.assertAlmostEqual(206.5924, t3.value)
-        self.assertEqual("K", t3.value)
+        self.assertEqual("K", t3.scale)
 
 def run():
     suite = u.TestLoader().loadTestsFromTestCase(MyTestCase)
