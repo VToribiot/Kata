@@ -43,21 +43,30 @@ class Temperature:
     def add(self, obj):
         obj = Temperature.conversion(self, obj)
         temp = Temperature(self.value + obj.value, self.scale)
+        if temp.value == 0:
+            raise Exception("It cannot result in 0")
         return temp
 
     def substract(self, obj):
         obj = Temperature.conversion(self, obj)
         temp = Temperature(self.value - obj.value, self.scale)
+        if temp.value == 0:
+            raise Exception("It cannot result in 0")
         return temp
 
     def multiply(self, obj):
         obj = Temperature.conversion(self, obj)
         temp = Temperature(self.value * obj.value, self. scale)
+        if temp.value == 0:
+            raise Exception("It cannot result in 0")
         return temp
 
     def divide(self, obj):
-        obj = Temperature.conversion(self, obj)
-        temp = Temperature(self.value / obj.value, self.scale)
+        if obj.value != 0:
+            obj = Temperature.conversion(self, obj)
+            temp = Temperature(self.value / obj.value, self.scale)
+        else:
+             raise ZeroDivisionError
         return temp
 
 
