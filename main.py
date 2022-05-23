@@ -1,16 +1,41 @@
-# This is a sample Python script.
+# Create a temperature class
+# Create the conversion method
+# Create the operation methods
+# Test methods
+# Work in the main part
 
-# Press Mayús+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+class Temperature:
+    def __init__(self, value, scale):
+        self.value = value
+        self.scale = scale
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    def conversion(self, obj): # The second object scale changes into the first one's
+        if self.scale == obj.scale:
+            return obj
+        elif self.scale == "K":
+            if obj.scale == "C":
+                obj.scale = "K"
+                obj.value += 273.15
+                return obj
+            elif obj.scale == "F":
+                obj.scale = "K"
+                obj.value = ((obj.value - 32) * 5/9) + 273.15
+                return obj
+        elif self.scale == "C":
+            if obj.scale == "K":
+                obj.scale = "C"
+                obj.value -= 273.15
+                return obj
+            elif obj.scale == "F":
+                obj.scale = "C"
+                obj.value = (obj.value - 32) * 5/9
+                return obj
+        elif self.scale == "F":
+            if obj.scale == "C":
+                obj.scale = "F"
+                obj.value = (obj.value * 9/5) + 32
+                return obj
+            elif obj.scale == "K":
+                obj.scale = "F"
+                obj.value = ((obj.value - 273.15) * 9/5) + 32
+                return obj
