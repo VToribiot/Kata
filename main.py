@@ -1,8 +1,8 @@
 # Create a temperature class
 # Create the conversion method
 # Create the operation methods
-# Test methods
 # Work in the main part
+# Test methods
 
 class Temperature:
     def __init__(self, value, scale):
@@ -39,3 +39,35 @@ class Temperature:
                 obj.scale = "F"
                 obj.value = ((obj.value - 273.15) * 9/5) + 32
                 return obj
+
+    def add(self, obj):
+        obj = Temperature.conversion(self, obj)
+        temp = Temperature(self.value + obj.value, self.scale)
+        return temp
+
+    def substract(self, obj):
+        obj = Temperature.conversion(self, obj)
+        temp = Temperature(self.value - obj.value, self.scale)
+        return temp
+
+    def multiply(self, obj):
+        obj = Temperature.conversion(self, obj)
+        temp = Temperature(self.value * obj.value, self. scale)
+        return temp
+
+    def divide(self, obj):
+        obj = Temperature.conversion(self, obj)
+        temp = Temperature(self.value / obj.value, self.scale)
+        return temp
+
+
+def main():
+    t1 = Temperature(294.78, 'K')
+    t2 = Temperature(168.16, "F")
+
+    t3 = t1.substract(t2)
+
+    print(t3.value, t3.scale)
+
+
+main()
