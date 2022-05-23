@@ -23,26 +23,30 @@ class Temperature:
                 return Temperature(((o.value - 273.15) * 9/5) + 32, "F")
 
     def add(self, o):
+        o = self.conversion(o)
         if round(self.value + o.value, 4) != 0:
             return Temperature(round(self.value + o.value, 4), self.scale)
         else:
             raise BaseException("This cannot result in 0")
 
     def substract(self, o):
+        o = self.conversion(o)
         if round(self.value - o.value, 4) != 0:
             return Temperature(round(self.value - o.value, 4), self.scale)
         else:
             raise BaseException("This cannot result in 0")
 
     def multiply(self, o):
-        if round(self.value * o.value, 4) != 0:
-            return Temperature(round(self.value * o.value, 4), self.scale)
+        o = self.conversion(o)
+        if self.value * o.value != 0:
+            return Temperature(round((self.value * o.value), 4), self.scale)
         else:
             raise BaseException("This cannot result in 0")
 
     def divide(self, o):
+        o = self.conversion(o)
         if round(self.value / o.value, 4) != 0 and o.value != 0:
-            return Temperature(round(self.value / o.value, 4), self.scale)
+            return Temperature(round((self.value / o.value), 4), self.scale)
         elif o.value == 0:
             raise ZeroDivisionError
         else:
