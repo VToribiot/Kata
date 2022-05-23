@@ -10,32 +10,32 @@ class Temperature:
         self.scale = scale
 
     def conversion(self, obj): # The second object scale changes into the first one's
-        if self.scale == obj.scale:
+        if self.scale == obj.scale:  # Checks if both are the same scale
             return obj
-        elif self.scale == "K":
-            if obj.scale == "C":
+        elif self.scale == "K":  # Checks if main object is Kelvin
+            if obj.scale == "C":  # Checks if secondary object is Celcius
                 obj.scale = "K"
                 obj.value += 273.15
                 return obj
-            elif obj.scale == "F":
+            elif obj.scale == "F": # Checks if secondary object is Fahrenheit
                 obj.scale = "K"
                 obj.value = ((obj.value - 32) * 5/9) + 273.15
                 return obj
-        elif self.scale == "C":
-            if obj.scale == "K":
+        elif self.scale == "C":  # Checks if main object is Celcius
+            if obj.scale == "K":  # Checks if secondary object is Kelvin
                 obj.scale = "C"
                 obj.value -= 273.15
                 return obj
-            elif obj.scale == "F":
+            elif obj.scale == "F":  # Checks if secondary object is Fahrenheit
                 obj.scale = "C"
                 obj.value = (obj.value - 32) * 5/9
                 return obj
-        elif self.scale == "F":
-            if obj.scale == "C":
+        elif self.scale == "F":  # Checks if main object is Fahrenheit
+            if obj.scale == "C":  # Checks if secondary object is Celcius
                 obj.scale = "F"
                 obj.value = (obj.value * 9/5) + 32
                 return obj
-            elif obj.scale == "K":
+            elif obj.scale == "K":  # Checks if secondary object is Kelvin
                 obj.scale = "F"
                 obj.value = ((obj.value - 273.15) * 9/5) + 32
                 return obj
