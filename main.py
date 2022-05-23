@@ -70,4 +70,4 @@ def main():
     print(t3.value, t3.scale)
 
 
-main()
+# main()
