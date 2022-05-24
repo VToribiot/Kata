@@ -31,6 +31,11 @@ class Temperature:
         else:
             raise ValueError
 
+    def multiply(self, o):
+        if round(self.value * o.value, 4) != 0:
+            return Temperature(round(self.value * o.value, 4), self.scale)
+        else:
+            raise ValueError
 
 
 
