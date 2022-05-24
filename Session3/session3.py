@@ -18,3 +18,11 @@ class Temperature:
             return o(o.value + 273.15, self.scale)
         elif self.scale == "K" and o.scale == "F":
             return o(((o.value - 32) * 5/9) + 273.15, self.scale)
+
+    def add(self, o):
+        if round(self.value + o.value, 4) != 0:
+            return Temperature(round(self.value + o.value, 4), self.scale)
+        else:
+            raise ValueError
+
+
