@@ -72,18 +72,14 @@ class MyTestCase(u.TestCase):
         self.assertEqual(t1.scale, t3.scale)
 
     def test11(self):
-        t1 = s.Temperature()
-        t2 = s.Temperature()
-        t3 = t1.add(t2)
-        self.assertAlmostEqual( , t3.value)
-        self.assertEqual(t1.scale, t3.scale)
+        t1 = s.Temperature(185.3084, "C")
+        t2 = s.Temperature(32, "F")
+        self.assertRaises(ZeroDivisionError, t1.division, t2)
 
     def test12(self):
-        t1 = s.Temperature()
-        t2 = s.Temperature()
-        t3 = t1.add(t2)
-        self.assertAlmostEqual( , t3.value)
-        self.assertEqual(t1.scale, t3.scale)
+        t1 = s.Temperature(55.5156, "K")
+        t2 = s.Temperature(-359.74192, "C")
+        self.assertRaises(ValueError, t1.add, t2)
 
 
 def run():
