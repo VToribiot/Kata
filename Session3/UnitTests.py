@@ -19,56 +19,56 @@ class MyTestCase(u.TestCase):
         t1 = s.Temperature(218.36, "K")
         t2 = s.Temperature(-345.0377, "F")
         t3 = t1.add(t2)
-        self.assertAlmostEqual(282.0446, t3.value)
+        self.assertAlmostEqual(t1.value + t1.conversion(t2).value, t3.value)
         self.assertEqual(t1.scale, t3.scale)
 
     def test04(self):
         t1 = s.Temperature(-242.8278, "C")
         t2 = s.Temperature(-75.7804, "F")
         t3 = t1.add(t2)
-        self.assertAlmostEqual(-302.7058, t3.value)
+        self.assertAlmostEqual(t1.value + t1.conversion(t2).value, t3.value)
         self.assertEqual(t1.scale, t3.scale)
 
     def test05(self):
         t1 = s.Temperature(40.3094, "F")
         t2 = s.Temperature(-57.1392, "K")
         t3 = t1.substraction(t2)
-        self.assertAlmostEqual(602.823 , t3.value)
+        self.assertAlmostEqual(t1.value - t1.conversion(t2).value , t3.value)
         self.assertEqual(t1.scale, t3.scale)
 
     def test06(self):
-        t1 = s.Temperature()
-        t2 = s.Temperature()
+        t1 = s.Temperature(33.3534, "C")
+        t2 = s.Temperature(-62.0510, "F")
         t3 = t1.substraction(t2)
-        self.assertAlmostEqual( , t3.value)
+        self.assertAlmostEqual(t1.value - t1.conversion(t2).value, t3.value)
         self.assertEqual(t1.scale, t3.scale)
 
     def test07(self):
-        t1 = s.Temperature()
-        t2 = s.Temperature()
+        t1 = s.Temperature(296.6771, "K")
+        t2 = s.Temperature(212.5461, "C")
         t3 = t1.multiply(t2)
-        self.assertAlmostEqual( , t3.value)
+        self.assertAlmostEqual(t1.value * t1.conversion(t2).value, t3.value)
         self.assertEqual(t1.scale, t3.scale)
 
     def test08(self):
-        t1 = s.Temperature()
-        t2 = s.Temperature()
+        t1 = s.Temperature(459.263, "F")
+        t2 = s.Temperature(5.0754, "F")
         t3 = t1.multiply(t2)
-        self.assertAlmostEqual( , t3.value)
+        self.assertAlmostEqual(t1.value * t1.conversion(t2).value, t3.value)
         self.assertEqual(t1.scale, t3.scale)
 
     def test09(self):
-        t1 = s.Temperature()
-        t2 = s.Temperature()
+        t1 = s.Temperature(-257.393, "F")
+        t2 = s.Temperature(27.3613, "C")
         t3 = t1.division(t2)
-        self.assertAlmostEqual( , t3.value)
+        self.assertAlmostEqual(t1.value / t1.conversion(t2).value , t3.value)
         self.assertEqual(t1.scale, t3.scale)
 
     def test10(self):
-        t1 = s.Temperature()
-        t2 = s.Temperature()
+        t1 = s.Temperature(290.1718, "K")
+        t2 = s.Temperature(169.4152, "F")
         t3 = t1.division(t2)
-        self.assertAlmostEqual( , t3.value)
+        self.assertAlmostEqual(t1.value / t1.conversion(t2).value, t3.value)
         self.assertEqual(t1.scale, t3.scale)
 
     def test11(self):
