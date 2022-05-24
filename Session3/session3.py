@@ -7,17 +7,17 @@ class Temperature:
         if self.scale == o.scale:
             return o
         elif self.scale == "C" and o.scale == "F":
-            return o((o.value - 32) * 5/9, self.scale)
+            return Temperature((o.value - 32) * 5/9, self.scale)
         elif self.scale == "C" and o.scale == "K":
-            return o(o.value - 273.15, self.scale)
+            return Temperature(o.value - 273.15, self.scale)
         elif self.scale == "F" and o.scale == "C":
-            return o((o.value * 9/5) + 32, self.scale)
+            return Temperature((o.value * 9/5) + 32, self.scale)
         elif self.scale == "F" and o.scale == "K":
-            return o(((o.value - 273.15) * 9/5) + 32, self.scale)
+            return Temperature(((o.value - 273.15) * 9/5) + 32, self.scale)
         elif self.scale == "K" and o.scale == "C":
-            return o(o.value + 273.15, self.scale)
+            return Temperature(o.value + 273.15, self.scale)
         elif self.scale == "K" and o.scale == "F":
-            return o(((o.value - 32) * 5/9) + 273.15, self.scale)
+            return Temperature(((o.value - 32) * 5/9) + 273.15, self.scale)
 
     def add(self, o):
         o = self.conversion(o)
